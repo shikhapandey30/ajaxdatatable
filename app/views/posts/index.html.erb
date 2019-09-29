@@ -1,0 +1,61 @@
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
+
+
+<table id="posts-datatable" data-source="<%= posts_path(format: :json) %>">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>FistName</th>
+    <th>Lastname</th>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<br>
+
+<%#= link_to 'New Blog', new_blog_path %>
+
+<script>
+    jQuery(document).ready(function() {
+        $('#posts-datatable').dataTable({
+            "processing": true,
+            "serverSide": true,
+            "columnDefs": [{ "orderable": false, "targets": -1 }],
+            "ajax": $('#posts-datatable').data('source'),
+            "pagingType": "full_numbers",
+            "columns": [
+                {"data": "id"},
+                {"data": "name"},
+                {"data": "desc"},
+                {"data": "first_name"},
+                {"data": "last_name"}
+            ]
+            // pagingType is optional, if you want full pagination controls.
+            // Check dataTables documentation to learn more about
+            // available options.
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
